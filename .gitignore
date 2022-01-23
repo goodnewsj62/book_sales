@@ -1,0 +1,23 @@
+#virtual enviroment
+venv/*
+venv
+
+#vscode added
+__pycache__/*
+__pycache__
+.vscode
+
+# db files
+*.db
+*.sdf
+*.sql
+
+# csv files
+*.csv
+
+#custom added files
+todo.txt
+migrations
+migrations/*
+localrun.py
+.env
