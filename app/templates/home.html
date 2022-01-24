@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {# <link rel="icon" type="image/png" href=""> #}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="{{url_for('payment.home')}}"><h2>BookPurchase</h2></a>
+            <a href="{{url_for('payment.preorder')}}">Pre Order</a>
+        </header>
+        <main>
+            <section class="sec-one">
+                <div class="info">
+                    <h1>Nothing is wrong with you pre order</h1>
+                    <p>by Simon Priestly Adeola</p>
+                    <a href="{{url_for('payment.preorder')}}">Pre Order</a>
+                </div>
+                <div class="img">
+                    <img src="{{url_for('static', filename='images/MINI BOOK32.jpg')}}" alt="book-img">
+                </div>
+            </section>
+            <section class="about">
+                <h2>About</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad eos sapiente qui. Facere modi dignissimos ducimus dolorum veritatis totam facilis, nam laborum quod magnam aliquam corporis sunt ut cupiditate odit maxime vel tenetur nobis nulla atque excepturi minima neque distinctio animi! Sapiente amet, magni ea unde quo provident mollitia sunt!</p>
+            </section>
+        <main>
+        <footer>
+            <p> <span>&copy copyright routebirds 2022</span> for enquiry and compliant call 09026755437</p>
+        </footer>
+    </div>
+</body>
+</html>

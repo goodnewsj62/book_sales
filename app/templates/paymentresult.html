@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>result</title>
+    <link rel="icon" type="image/png" href=""> 
+    <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
+    <style>
+        header{
+        padding: 1rem 4rem;
+    }
+    header a{
+        text-decoration: none;
+        color: initial;
+    }
+    main{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items: center;
+        height:80vh;
+    }
+    
+    @media screen and (max-width:600px) {
+        header{
+            padding:1rem;
+        }
+        main{
+            padding: 1rem;
+            text-align:center;
+        }
+        main *{
+            margin-bottom: 0.5rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="{{url_for('payment.home')}}"><h2>BookPurchase</h2></a>
+        </header>
+        <main>
+            {% if status == "success" %}
+                <h1>YOUR ORDER WAS SUCCESSFUL</h1>
+                <a href="{{url_for('payment.home')}}">Home</a>
+            {% else %}
+                <h1>YOUR ORDER FAILED</h1>
+                <span>if same problem persist contact us on 09026755437</span>
+                <a href="{{url_for('payment.preorder')}}">Pre-order again</a>
+            {% endif %}
+        </main>
+    </div>
+</body>
+</html>

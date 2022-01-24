@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="icon" type="image/png" href=""> 
+    <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
+    <style>
+        header{
+        padding: 1rem 4rem;
+    }
+    header a{
+        text-decoration: none;
+        color: initial;
+    }
+    main{
+        display:flex;
+        flex-direction:column;
+        height:80vh;
+        padding:6rem 4rem;
+    }
+
+    main button{
+        color: #fff;
+        padding: 14px 43px;
+        background: coral;
+        font-weight: bold;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 8px;
+        margin-top:2rem;
+    }
+    
+    @media screen and (max-width:600px) {
+        header{
+            padding:1rem;
+        }
+        main{
+            padding: 1rem;
+            text-align:center;
+            justify-content:center;
+            padding: 8rem 1rem;
+        }
+        main *{
+            margin-bottom: 0.5rem;
+        }
+
+        main button{
+            display: block;
+            width: 100%;
+            padding: 13px ;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="{{url_for('payment.home')}}"><h2>BookPurchase</h2></a>
+        </header>
+        <main>
+            <h1>One More Step Left. Click The button to proceed</h1>
+            <form action="" id="paymentForm">
+                <button type="submit"> Pay </button>
+            </form>
+        </main>
+
+        <div id="email" style="visibility:hidden; width:0;">{{payment_details.email}}</div>
+        <div id="ref" style="visibility:hidden; width:0;">{{payment_details.ref}}</div>
+
+    </div>
+    
+    <script src="https://js.paystack.co/v1/inline.js"></script> 
+    <script>
+        var paymentForm = document.getElementById('paymentForm');
+
+        paymentForm.addEventListener('submit', payWithPaystack, false,);
+        function payWithPaystack(e) {
+        e.preventDefault();
+        var handler = PaystackPop.setup({
+            key: 'pk_test_b4edb12cc43738fcfac664295397cd7452d9f981', // Replace with your public key
+            email: document.getElementById('email').innerHTML,
+            amount: {{payment_details.amount}} * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
+            currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars
+            ref: document.getElementById('ref').innerHTML, // Replace with a reference you generated
+            callback: function(response) {
+            //this happens after the payment is completed successfully
+            window.location = "{{url_for('payment.verify')}}"+"?ref=" + response.reference;
+            // Make an AJAX call to your server with the reference to verify the transaction
+            },
+            onClose: function() {
+                window.location = "{{url_for('payment.payment_result', status='failed')}}";
+            },
+        });
+        handler.openIframe();
+        }
+    </script>
+</body>
+</html>

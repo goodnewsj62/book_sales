@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href=""> 
+    <link rel="stylesheet" href="{{url_for('static', filename='css/order.css')}}">
+    <title>Purchase</title>
+</head>
+<body>
+    <div class="container">
+    <header>
+        <a href="{{url_for('payment.home')}}"><h2>BookPurchase</h2></a>
+    </header>
+    <main>
+        <form  method="POST">
+            {{form.hidden_tag()}}
+            <div class="form-field">
+                <label class="field-label" for="price">Amount</label>
+                <input type="text" id = "price" class="field disabled" disabled value="100">
+            </div>
+            <div class="form-field">
+                {{form.names.label(class="field-label")}}
+                {% if form.names.errors %}
+                    {{form.names(class="field form-error", placeholder="full name")}}
+                    <ul class="error-list">
+                        {% for error in form.names.errors %}
+                            <li>{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    {{form.names(class="field", placeholder="full names")}}
+                {% endif %}
+            </div>
+            
+            <div class="form-field">
+                {{form.email.label(class="field-label")}}
+                {% if form.email.errors %}
+                    {{form.email(class="field form-error", placeholder="example@email.com")}}
+                    <ul class="error-list">
+                        {% for error in form.email.errors %}
+                            <li>{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    {{form.email(class="field", placeholder="example@email.com")}}
+                {% endif %}
+            </div>
+
+            <div class="form-field">
+                {{form.phone.label(class="field-label")}}
+                {% if form.phone.errors %}
+                    {{form.phone(class="field form-error", placeholder="phone")}}
+                    <ul class="error-list">
+                        {% for error in form.phone.errors %}
+                            <li>{{error}}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    {{form.phone(class="field", placeholder="phone")}}
+                {% endif %}
+            </div>
+
+            <button type="submit">
+                Purchase
+            </button>
+        </form>
+    </main>
+    </div>
+</body>
+</html>
