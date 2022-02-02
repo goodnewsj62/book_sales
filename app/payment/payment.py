@@ -19,7 +19,7 @@ def preorder():
     if form.validate_on_submit():
         payment_details=  Payment.payment_exists(form.email.data,form.phone.data)
         if not payment_details:
-            payment_details = Payment(amount= 100,names= form.names.data,email=form.email.data,phone=form.phone.data)
+            payment_details = Payment(amount= 1500,names= form.names.data,email=form.email.data,phone=form.phone.data)
             db.session.add(payment_details)
             db.session.commit()
         return redirect(url_for('payment.paypage',ref = payment_details.ref))

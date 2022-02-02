@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}">
+</head>
+<body>
+    <div class="container">
+        {% if db_admin %}
+            <header>
+                <h1>Successful Transactions</h1>
+                <a href="{{url_for('auth.admin')}}">paystack records</a>
+            </header>
+            
+
+            {% if data %}
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Names</th>
+                            <th>Amount</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Date Created</th>
+                            <th>Verified</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in data %}
+                            <tr>
+                                <td>
+                                    {{ record.names }}
+                                </td>
+                                <td>
+                                    {{ record.amount }}
+                                </td>
+                                <td>
+                                    {{ record.email }}
+                                </td>
+                                <td>
+                                    {{ record.phone }}
+                                </td>
+                                <td>
+                                    {{ record.date_created }}
+                                </td>
+                                <td>
+                                    {% if record.verified %}
+                                        <input type="checkbox" checked disabled id="checked">
+                                    {% else %}
+                                        <input type="checkbox"  disabled id="unchecked">
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="error"> Seems no there are no records yet you can contact developer 09026755437 for more info</div>
+            {%endif%}
+        {% else %}
+            <header>
+                <h1>Successful Transactions</h1>
+                <a href="{{url_for('auth.db_admin')}}">local db records</a>
+            </header>
+            {% if data %}
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Transaction ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in data %}
+                            {% with customer=record["customer"] %}
+                                <tr>
+                                    <td>
+                                        {{customer["first_name"]}}
+                                    </td>
+                                    <td>
+                                        {{customer["last_name"]}}
+                                    </td>
+                                    <td>
+                                        {{customer["email"]}}
+                                    </td>
+                                    <td>
+                                        {{customer["phone"]}}
+                                    </td>
+                                    <td>
+                                        {{customer["id"]}}
+                                    </td>
+                                </tr>
+                            {% endwith %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="error"> Seems no there are no records yet you can contact developer 09026755437 for more info</div>
+        {%endif%}
+        
+        {% endif %}
+
+
+        <footer>
+            {% if prev_page %}
+                <a href="{{prev_page}}">prev</a>
+            {% endif %}
+            
+            {% if next_page %}
+                <a href="{{next_page}}"> next</a>
+            {% endif %}
+        </footer>
+    </div>
+</body>
+</html>

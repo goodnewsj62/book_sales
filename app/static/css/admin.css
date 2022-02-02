@@ -1,0 +1,59 @@
+@import 'base.css';
+
+header{
+    padding: 1rem ;
+}
+
+.table{
+    padding: 30px 10px;
+    overflow-x: auto;
+}
+table{
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 2px;
+}
+thead{
+    display: table-header-group;
+    vertical-align: middle;
+}
+th{
+    background-color: #212529;
+    color: #fff;
+    border-color: #32383e;
+}
+
+tr{
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+td, th{
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+tr:nth-child(even){
+    background-color: rgba(31, 143, 255,0.2);
+}
+
+table input{
+    margin-left: 20px;
+}
+
+footer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+footer a{
+    padding:10px 15px;
+    text-decoration: none;
+    background-color: rgba(31, 143, 255,0.2);
+    margin: 30px 5px;
+}

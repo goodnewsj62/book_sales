@@ -23,8 +23,8 @@ class Verify:
         return self.get_response(url)
         
     
-    def list_transactions(self) -> dict:
-        url = self.base_url
+    def list_transactions(self,page=1) -> dict:
+        url = self.base_url +"?status=success"+ "&page=" + str(page)
         return self.get_response(url)
 
     def fetch_transaction(self,id:int) -> dict:

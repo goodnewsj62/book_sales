@@ -4,6 +4,7 @@ from datetime import datetime
 import uuid
 import base64
 from .payment.verify_payment import Verify
+from flask_login import UserMixin
 
 
 #your models here
@@ -49,14 +50,14 @@ class Payment(db.Model):
             return None
 
 
-class Admin(db.Model):
+class Admin(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(500), nullable=False)
 
     def __init__(self,username,password) -> None:
         self.username = username
-        self.password = pwd_context.hash(password)
+        self.password = pwd_context.encrypt(password)
 
     def verify_password(self, password) -> bool:
         return pwd_context.verify(password,self.password)

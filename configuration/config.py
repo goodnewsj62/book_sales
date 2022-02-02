@@ -7,5 +7,5 @@ load_dotenv(find_dotenv())
 class Config:
     SECRET_KEY = secrets.token_hex(16)
     DEBUG = True #flase if in production
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///test.db'
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
     #other settings constacts NB; replace None above with database uri

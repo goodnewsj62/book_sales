@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    {# <link rel="icon" type="image/png" href=""> #}
+    <link rel="icon" type="image/png" href=""> 
     <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header>
-            <a href="{{url_for('payment.home')}}"><h2>BookPurchase</h2></a>
+            <a style="font-family: 'Yellowtail', cursive;" href="{{url_for('payment.home')}}"><h2>SimonPriestly</h2></a>
             <a href="{{url_for('payment.preorder')}}">Pre Order</a>
         </header>
         <main>
@@ -22,12 +26,12 @@
                     <a href="{{url_for('payment.preorder')}}">Pre Order</a>
                 </div>
                 <div class="img">
-                    <img src="{{url_for('static', filename='images/MINI BOOK32.jpg')}}" alt="book-img">
+                    <img src="{{url_for('static', filename='images/MINI BOOK2a.jpg')}}" alt="book-img">
                 </div>
             </section>
             <section class="about">
                 <h2>About</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad eos sapiente qui. Facere modi dignissimos ducimus dolorum veritatis totam facilis, nam laborum quod magnam aliquam corporis sunt ut cupiditate odit maxime vel tenetur nobis nulla atque excepturi minima neque distinctio animi! Sapiente amet, magni ea unde quo provident mollitia sunt!</p>
+                <p>More than we seek to know is the desire to figure out what might be wrong with us when everything seems to be working against us, especially in our relationships. This mini-sized masterpiece solves all of that. Enjoy!</p>
             </section>
         <main>
         <footer>

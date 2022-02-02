@@ -7,6 +7,10 @@
     <title>result</title>
     <link rel="icon" type="image/png" href=""> 
     <link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
     <style>
         header{
         padding: 1rem 4rem;
@@ -40,7 +44,7 @@
 <body>
     <div class="container">
         <header>
-            <a href="{{url_for('payment.home')}}"><h2>BookPurchase</h2></a>
+            <a style="font-family: 'Yellowtail', cursive;" href="{{url_for('payment.home')}}"><h2>SimonPriestly</h2></a>
         </header>
         <main>
             {% if status == "success" %}

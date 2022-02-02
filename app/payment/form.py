@@ -7,7 +7,7 @@ from ..models import *
 
 # your form class here
 class PaymentForm(FlaskForm):
-    names = StringField("full name",validators=[DataRequired(),Length(min=2,max=1000)])
+    names = StringField("full name",validators=[DataRequired(),Length(min=2,max=800)])
     email = EmailField("email",validators=[Email(),DataRequired()])
     phone = StringField("phone", validators=[DataRequired()])
 
